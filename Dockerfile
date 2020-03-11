@@ -3,6 +3,7 @@ MAINTAINER kennyparsons
 
 ENV OPTIONS="defaults,sync_read,allow_other,category.action=all,category.create=ff"
 ENV FILESYSTEMS=
+ENV MOUNTPOINT="point"
 
 RUN apt-get update \
   && apt-get install -y \

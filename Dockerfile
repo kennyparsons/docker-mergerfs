@@ -26,4 +26,4 @@ RUN chmod +x /entrypoint.sh
 VOLUME /mnt/folder1
 VOLUME /mnt/folder2
 
-CMD ["/entrypoint.sh", "-xv"]
+CMD ["/entrypoint.sh"]

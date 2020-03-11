@@ -12,17 +12,14 @@ function fuse_unmount {
   fusermount -u -z /mnt/$MOUNTPOINT
 }
 
-makedir(){
-	mkdir -p /mnt/$MOUNTPOINT
-}
-
 if [ -z "${SOURCEDIRS}" ]; then
   echo "No filesystems specified!"
 fi
 
+mkdir -p /mnt/$MOUNTPOINT
+
 trap term_handler SIGINT SIGTERM
 
-makdir
 while true
 do
   /usr/bin/mergerfs -f -o $OPTIONS "$SOURCEDIRS" /mnt/$MOUNTPOINT & wait ${!}

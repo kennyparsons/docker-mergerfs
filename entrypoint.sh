@@ -9,21 +9,21 @@ function term_handler {
 }
 
 function fuse_unmount {
-  fusermount -u -z /mnt
+  fusermount -u -z /mnt/$MOUNTPOINT
 }
 
 if [ -z "${SOURCEDIRS}" ]; then
   echo "No filesystems specified!"
 fi
 
-#mkdir -p /mnt/$MOUNTPOINT
-#chmod 777 /mnt/$MOUNTPOINT
+mkdir -p /mnt/$MOUNTPOINT
+chmod 777 /mnt/$MOUNTPOINT
 
 trap term_handler SIGINT SIGTERM
 
 while true
 do
-  /usr/bin/mergerfs -f -o $OPTIONS "$SOURCEDIRS" /mnt & wait ${!}
+  /usr/bin/mergerfs -f -o $OPTIONS "$SOURCEDIRS" /mnt/$MOUNTPOINT & wait ${!}
   echo "mergerfs crashed at: $(date +%Y.%m.%d-%T)"
   fuse_unmount
 done

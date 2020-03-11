@@ -23,6 +23,7 @@ RUN git clone https://github.com/trapexit/mergerfs.git \
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 #WORKDIR /merged
-#VOLUME /merged
+VOLUME /mnt/folder1
+VOLUME /mnt/folder2
 
 CMD ["/entrypoint.sh", "-xv"]

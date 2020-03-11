@@ -25,4 +25,4 @@ RUN chmod +x /entrypoint.sh
 #WORKDIR /merged
 #VOLUME /merged
 
-CMD ["/entrypoint.sh"]
+CMD ["/entrypoint.sh", "-xv"]

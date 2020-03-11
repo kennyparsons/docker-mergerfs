@@ -17,6 +17,7 @@ if [ -z "${SOURCEDIRS}" ]; then
 fi
 
 mkdir -p /mnt/$MOUNTPOINT
+chmod 777 /mnt/$MOUNTPOINT
 
 trap term_handler SIGINT SIGTERM
 

@@ -2,7 +2,7 @@ FROM debian:buster-slim
 MAINTAINER kennyparsons
 
 ENV OPTIONS="defaults,sync_read,allow_other,category.action=all,category.create=ff"
-ENV FILESYSTEMS=
+ENV SOURCEDIRS=
 ENV MOUNTPOINT="point"
 
 RUN apt-get update \

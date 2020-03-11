@@ -9,7 +9,7 @@ function term_handler {
 }
 
 function fuse_unmount {
-  fusermount -u -z /merged
+  fusermount -u -z /mnt
 }
 
 if [ -z "${SOURCEDIRS}" ]; then
@@ -23,7 +23,7 @@ trap term_handler SIGINT SIGTERM
 
 while true
 do
-  /usr/bin/mergerfs -f -o $OPTIONS "$SOURCEDIRS" /merged & wait ${!}
+  /usr/bin/mergerfs -f -o $OPTIONS "$SOURCEDIRS" /mnt & wait ${!}
   echo "mergerfs crashed at: $(date +%Y.%m.%d-%T)"
   fuse_unmount
 done

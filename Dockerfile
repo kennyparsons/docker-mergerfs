@@ -17,9 +17,11 @@ RUN git clone https://github.com/trapexit/mergerfs.git \
   && make deb \
   && dpkg -i ../mergerfs_*_*.deb \
   && apt-get clean \
-  && rm -rf /mergerfs* /var/lib/apt/lists/* /tmp/* /var/tmp/*
+  && rm -rf /mergerfs* /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+  && mkdir /merged
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
+VOLUME /merged
 
 CMD ["/entrypoint.sh"]

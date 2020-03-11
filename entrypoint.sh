@@ -12,7 +12,7 @@ function fuse_unmount {
   fusermount -u -z /mnt/$MOUNTPOINT
 }
 
-function makedir(){
+makedir(){
 	mkdir -p /mnt/$MOUNTPOINT
 }
 

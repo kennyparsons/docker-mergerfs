@@ -9,7 +9,7 @@ function term_handler {
 }
 
 function fuse_unmount {
-  fusermount -u -z /mnt
+  fusermount -u -z /mnt/$MOUNTPOINT
 }
 
 if [ -z "${SOURCEDIRS}" ]; then

@@ -12,7 +12,7 @@ function fuse_unmount {
   fusermount -u -z /mnt
 }
 
-if [ -z "${FILESYSTEMS}" ]; then
+if [ -z "${SOURCEDIRS}" ]; then
   echo "No filesystems specified!"
 fi
 
@@ -20,7 +20,7 @@ trap term_handler SIGINT SIGTERM
 
 while true
 do
-  /usr/bin/mergerfs -f -o $OPTIONS "$FILESYSTEMS" /mnt & wait ${!}
+  /usr/bin/mergerfs -f -o $OPTIONS "$SOURCEDIRS" /mnt/$MOUNTPOINT & wait ${!}
   echo "mergerfs crashed at: $(date +%Y.%m.%d-%T)"
   fuse_unmount
 done

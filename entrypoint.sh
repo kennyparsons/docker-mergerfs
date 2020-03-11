@@ -23,6 +23,7 @@ trap term_handler SIGINT SIGTERM
 
 while true
 do
+  echo "mounting ${SOURCEDIRS}"
   /usr/bin/mergerfs -f -o $OPTIONS "$SOURCEDIRS" /mnt/$MOUNTPOINT & wait ${!}
   echo "mergerfs crashed at: $(date +%Y.%m.%d-%T)"
   fuse_unmount

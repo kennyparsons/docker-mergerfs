@@ -1,4 +1,4 @@
-FROM debian
+FROM debian:buster-slim
 MAINTAINER kennyparsons
 
 ENV OPTIONS="defaults,sync_read,allow_other,category.action=all,category.create=ff"
@@ -18,7 +18,7 @@ RUN git clone https://github.com/trapexit/mergerfs.git \
   && apt-get clean \
   && rm -rf /mergerfs* /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY start.sh /
-RUN chmod +x /start.sh
+COPY entrypoint.sh /
+RUN chmod +x /entrypoint.sh
 
 CMD ["/entrypoint.sh"]
